@@ -38,15 +38,6 @@ namespace ServiceB
 			loggerFactory.AddDebug();
 
 			app.UseMvc();
-			app.Map("/", builder =>
-			{
-				builder.Run(async ctx =>
-				{
-					ctx.Response.Headers.Add("Content-Type", new StringValues("application/json"));
-					ctx.Response.Body = new MemoryStream(Encoding.UTF8.GetBytes("{ \"alive\": true, \"service\": \"b\" }"));
-					await Task.Delay(1);
-				});
-			});
 		}
 	}
 }
